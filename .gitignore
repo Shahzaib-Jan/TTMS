@@ -1,0 +1,29 @@
+﻿## Build and Output Directories
+[Bb]in/
+[Oo]bj/
+out/
+
+## Visual Studio Cache and User Files
+.vs/
+*.user
+*.userosv
+*.suo
+*.userprefs
+*.sln.docstates
+*.DotSettings.user
+
+## NuGet Packages
+packages/
+*.nupkg
+
+## Temporary & OS Files
+*.tmp
+*.log
+*.cache
+Thumbs.db
+[Dd]esktop.ini
+.DS_Store
+
+## Backup Folders
+New folder/
+*.zip

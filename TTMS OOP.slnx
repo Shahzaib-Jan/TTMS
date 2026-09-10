@@ -1,0 +1,6 @@
+﻿<Solution>
+  <Project Path="TTMS OOP/TTMS_OOP.csproj" Id="db01c7f6-9b09-4bd5-8899-1602b7969476" />
+  <Project Path="TTMS_OOP.BLL/TTMS_OOP.BLL.csproj" />
+  <Project Path="TTMS_OOP.DAL/TTMS_OOP.DAL.csproj" />
+  <Project Path="TTMS_OOP.Models/TTMS_OOP.Models.csproj" />
+</Solution>
