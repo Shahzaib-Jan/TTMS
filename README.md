@@ -1,4 +1,4 @@
-﻿# Timetable Management System (TTMS)
+# Timetable Management System (TTMS)
 
 A modern, robust Windows Forms desktop application developed in C# (.NET Framework) for automated and interactive university timetable scheduling, conflict management, and printable report generation.
 
@@ -17,7 +17,7 @@ A modern, robust Windows Forms desktop application developed in C# (.NET Framewo
   - Real-time ascending sorting for clean data overview.
 - **High-Resolution Print & Export**:
   - Formatted canvas rendering for printable preview and timetable export.
-  - Academic header styling with customized attribution (*By Shahzaib (1258)*).
+  - Academic header styling with customized attribution (*By Shahzaib*).
 - **Authentication & Security**:
   - Secure login with role management and password change utility.
   - JSON-based persistent repository.
@@ -57,5 +57,5 @@ A modern, robust Windows Forms desktop application developed in C# (.NET Framewo
 
 ## 👨‍💻 Author
 
-**Shahzaib Jan** (Roll No: 1258)  
+**Shahzaib Jan**  
 GitHub: [@Shahzaib-Jan](https://github.com/Shahzaib-Jan)

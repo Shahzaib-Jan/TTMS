@@ -499,12 +499,6 @@ namespace TTMS_OOP.Forms
             g.DrawLine(new Pen(AppColors.Primary, 2), sx, totalH, sx+tableW, totalH);
             string incharge = txtIncharge != null && !string.IsNullOrWhiteSpace(txtIncharge.Text) ? txtIncharge.Text.Trim() : "Mr. Mohsin Sheraz";
             g.DrawString("Timetable Incharge:  " + incharge, footerFont, new SolidBrush(AppColors.OnSurfaceVar), sx, totalH+10);
-            
-            // Hidden roll number tag placed discreetly in the bottom-right corner
-            Font hiddenFont = new Font("Segoe UI", 6.5f, FontStyle.Regular);
-            Brush hiddenBrush = new SolidBrush(Color.FromArgb(195, 202, 215));
-            SizeF rollSz = g.MeasureString("1258", hiddenFont);
-            g.DrawString("1258", hiddenFont, hiddenBrush, sx + tableW - rollSz.Width - 4, totalH + 26);
         }
 
         // ─────────────────────────────────────────
@@ -844,12 +838,6 @@ namespace TTMS_OOP.Forms
             };
             Font inchargeFont = new Font("Segoe UI", 9f, FontStyle.Bold);
             g.DrawString("Timetable Incharge: " + incharge, inchargeFont, new SolidBrush(Color.FromArgb(30, 45, 75)), new RectangleF(sigX, sigY + 6, sigW, 26), noWrapSf);
-
-            // Hidden roll number tag placed discreetly in the bottom-right corner
-            Font hiddenFont = new Font("Segoe UI", 6.5f, FontStyle.Regular);
-            Brush hiddenBrush = new SolidBrush(Color.FromArgb(195, 202, 215));
-            SizeF rollSz = g.MeasureString("1258", hiddenFont);
-            g.DrawString("1258", hiddenFont, hiddenBrush, sx + tableW - rollSz.Width - 4, sigY + 28);
         }
 
         private void BtnPrint_Click(object sender, EventArgs e)

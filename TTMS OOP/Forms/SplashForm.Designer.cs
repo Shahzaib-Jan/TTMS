@@ -75,7 +75,7 @@ namespace TTMS_OOP.Forms
             this.lblVer.ForeColor = System.Drawing.Color.FromArgb(110, 255, 255, 255);
             this.lblVer.Location  = new System.Drawing.Point(55, 264);
             this.lblVer.Name      = "lblVer";
-            this.lblVer.Text      = "v1.0   Spring 2026  ·  By Shahzaib (1258)";
+            this.lblVer.Text      = "v1.0   Spring 2026  ·  By Shahzaib";
             // lblStatus
             this.lblStatus.AutoSize  = true;
             this.lblStatus.Font      = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Italic);

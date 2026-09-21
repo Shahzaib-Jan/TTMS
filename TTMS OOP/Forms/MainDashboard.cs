@@ -94,7 +94,7 @@ namespace TTMS_OOP.Forms
             bottomInfo.BackColor = Color.FromArgb(12, 36, 84);
 
             Label lblVersion = new Label();
-            lblVersion.Text = "TTMS System  ·  By Shahzaib (1258)";
+            lblVersion.Text = "TTMS System  ·  By Shahzaib";
             lblVersion.Font = new Font("Segoe UI", 8f);
             lblVersion.ForeColor = Color.FromArgb(80, 120, 180);
             lblVersion.AutoSize = true;
