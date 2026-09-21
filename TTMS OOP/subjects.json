@@ -1,0 +1,482 @@
+[
+  {
+    "SubjectId": 1,
+    "CourseCode": "HU-102",
+    "Name": "Functional Ms.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 1
+  },
+  {
+    "SubjectId": 2,
+    "CourseCode": "HU-240",
+    "Name": "Psychology Ms.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 2
+  },
+  {
+    "SubjectId": 3,
+    "CourseCode": "",
+    "Name": "Calculus and Analytical Geometry Ms.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 3
+  },
+  {
+    "SubjectId": 4,
+    "CourseCode": "",
+    "Name": "Quantitative Reasoning-I Dr.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 4
+  },
+  {
+    "SubjectId": 5,
+    "CourseCode": "CSC-102",
+    "Name": "Programming Fundamentals Mr.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 5
+  },
+  {
+    "SubjectId": 6,
+    "CourseCode": "CSC-100",
+    "Name": "ACIT Dr.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 6
+  },
+  {
+    "SubjectId": 7,
+    "CourseCode": "MA-011",
+    "Name": "Basic Math BSH TF-03",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 0
+  },
+  {
+    "SubjectId": 8,
+    "CourseCode": "",
+    "Name": "AICT(Lab-2 Dr.",
+    "Semester": "1st Semester",
+    "IsLab": true,
+    "TeacherId": 6
+  },
+  {
+    "SubjectId": 9,
+    "CourseCode": "",
+    "Name": "PF(Lab-2 Mr.",
+    "Semester": "1st Semester",
+    "IsLab": true,
+    "TeacherId": 5
+  },
+  {
+    "SubjectId": 10,
+    "CourseCode": "CSC-102",
+    "Name": "PF (Lab # 2 Mr.",
+    "Semester": "1st Semester",
+    "IsLab": true,
+    "TeacherId": 5
+  },
+  {
+    "SubjectId": 11,
+    "CourseCode": "CSC-100",
+    "Name": "ACIT(Lab Dr.",
+    "Semester": "1st Semester",
+    "IsLab": true,
+    "TeacherId": 6
+  },
+  {
+    "SubjectId": 12,
+    "CourseCode": "IS-104",
+    "Name": "Islamic Studies Dr.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 7
+  },
+  {
+    "SubjectId": 13,
+    "CourseCode": "HU102",
+    "Name": "Functional English Ms.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 8
+  },
+  {
+    "SubjectId": 14,
+    "CourseCode": "CSC-200",
+    "Name": "DSA Ms.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 10
+  },
+  {
+    "SubjectId": 15,
+    "CourseCode": "MA-234",
+    "Name": "Linear Algebra Mr.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 9
+  },
+  {
+    "SubjectId": 16,
+    "CourseCode": "",
+    "Name": "CN(Lab Mr.",
+    "Semester": "3rd Semester",
+    "IsLab": true,
+    "TeacherId": 11
+  },
+  {
+    "SubjectId": 17,
+    "CourseCode": "CSC-203",
+    "Name": "CN Mr.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 11
+  },
+  {
+    "SubjectId": 18,
+    "CourseCode": "CSC-204",
+    "Name": "SE Mr.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 12
+  },
+  {
+    "SubjectId": 19,
+    "CourseCode": "",
+    "Name": "DSA(Lab Ms.",
+    "Semester": "3rd Semester",
+    "IsLab": true,
+    "TeacherId": 10
+  },
+  {
+    "SubjectId": 20,
+    "CourseCode": "CSC-204",
+    "Name": "Software Engineering Mr.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 12
+  },
+  {
+    "SubjectId": 21,
+    "CourseCode": "CSC-203",
+    "Name": "Computer Networks Mr.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 11
+  },
+  {
+    "SubjectId": 22,
+    "CourseCode": "HU-102",
+    "Name": "Functional English Ms.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 8
+  },
+  {
+    "SubjectId": 23,
+    "CourseCode": "CSC-203",
+    "Name": "Computer Networks(Lab Mr.",
+    "Semester": "3rd Semester",
+    "IsLab": true,
+    "TeacherId": 11
+  },
+  {
+    "SubjectId": 24,
+    "CourseCode": "CSC-200",
+    "Name": "DSA(Lab Ms.",
+    "Semester": "3rd Semester",
+    "IsLab": true,
+    "TeacherId": 10
+  },
+  {
+    "SubjectId": 25,
+    "CourseCode": "MA-012",
+    "Name": "Basic Math Mr.",
+    "Semester": "3rd Semester",
+    "IsLab": false,
+    "TeacherId": 9
+  },
+  {
+    "SubjectId": 26,
+    "CourseCode": "HU-240",
+    "Name": "Psychology Ms.",
+    "Semester": "5th Semester",
+    "IsLab": false,
+    "TeacherId": 2
+  },
+  {
+    "SubjectId": 27,
+    "CourseCode": "CSC-301",
+    "Name": "Introduction to Human Computer Interaction Mr.",
+    "Semester": "5th Semester",
+    "IsLab": false,
+    "TeacherId": 12
+  },
+  {
+    "SubjectId": 28,
+    "CourseCode": "CSC-300",
+    "Name": "Operating Systems Ms.",
+    "Semester": "5th Semester",
+    "IsLab": false,
+    "TeacherId": 10
+  },
+  {
+    "SubjectId": 29,
+    "CourseCode": "",
+    "Name": "Electives Course Dr.",
+    "Semester": "5th Semester",
+    "IsLab": false,
+    "TeacherId": 14
+  },
+  {
+    "SubjectId": 30,
+    "CourseCode": "CSC351",
+    "Name": "Machine Learning Dr.Rida",
+    "Semester": "5th Semester",
+    "IsLab": false,
+    "TeacherId": 0
+  },
+  {
+    "SubjectId": 31,
+    "CourseCode": "CSC-302Computer",
+    "Name": "Architecture Ms.",
+    "Semester": "5th Semester",
+    "IsLab": false,
+    "TeacherId": 13
+  },
+  {
+    "SubjectId": 32,
+    "CourseCode": "CSC-300",
+    "Name": "Operating Systems(Lab Ms.",
+    "Semester": "5th Semester",
+    "IsLab": true,
+    "TeacherId": 10
+  },
+  {
+    "SubjectId": 33,
+    "CourseCode": "CSC454",
+    "Name": "Agent Based Modelling Dr.",
+    "Semester": "7th Semester",
+    "IsLab": false,
+    "TeacherId": 14
+  },
+  {
+    "SubjectId": 34,
+    "CourseCode": "MGT349",
+    "Name": "Entrepreneurship Mr.",
+    "Semester": "7th Semester",
+    "IsLab": false,
+    "TeacherId": 15
+  },
+  {
+    "SubjectId": 35,
+    "CourseCode": "",
+    "Name": "Mobile App Development Mr.",
+    "Semester": "7th Semester",
+    "IsLab": false,
+    "TeacherId": 12
+  },
+  {
+    "SubjectId": 36,
+    "CourseCode": "HU-200",
+    "Name": "Technical Report Writing Ms.",
+    "Semester": "7th Semester",
+    "IsLab": false,
+    "TeacherId": 1
+  },
+  {
+    "SubjectId": 37,
+    "CourseCode": "HU-212",
+    "Name": "Civics and Community Engagement",
+    "Semester": "7th Semester",
+    "IsLab": false,
+    "TeacherId": 20
+  },
+  {
+    "SubjectId": 38,
+    "CourseCode": "CMPE-112",
+    "Name": "PF(Lab Ms.",
+    "Semester": "1st Semester",
+    "IsLab": true,
+    "TeacherId": 13
+  },
+  {
+    "SubjectId": 39,
+    "CourseCode": "CMPE-111",
+    "Name": "ACIT Mr. Tahir",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 0
+  },
+  {
+    "SubjectId": 40,
+    "CourseCode": "MA-123",
+    "Name": "Calculus I Dr.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 17
+  },
+  {
+    "SubjectId": 41,
+    "CourseCode": "CMPE-251",
+    "Name": "Discrete Mathematical Structures Dr.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 4
+  },
+  {
+    "SubjectId": 42,
+    "CourseCode": "CMPE-112",
+    "Name": "PF Ms.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 13
+  },
+  {
+    "SubjectId": 43,
+    "CourseCode": "PHY-111",
+    "Name": "Applied Physics(Lab",
+    "Semester": "1st Semester",
+    "IsLab": true,
+    "TeacherId": 16
+  },
+  {
+    "SubjectId": 44,
+    "CourseCode": "PHY-111",
+    "Name": "Applied Physics",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 16
+  },
+  {
+    "SubjectId": 45,
+    "CourseCode": "MA-011",
+    "Name": "Basic Math TF- 03",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 0
+  },
+  {
+    "SubjectId": 46,
+    "CourseCode": "CMPE-111",
+    "Name": "ACIT(Lab Ms.",
+    "Semester": "1st Semester",
+    "IsLab": true,
+    "TeacherId": 13
+  },
+  {
+    "SubjectId": 47,
+    "CourseCode": "",
+    "Name": "Digital Logic Design(Lab Dr.",
+    "Semester": "2nd Semester",
+    "IsLab": true,
+    "TeacherId": 6
+  },
+  {
+    "SubjectId": 48,
+    "CourseCode": "",
+    "Name": "Database Systems Mr.",
+    "Semester": "2nd Semester",
+    "IsLab": false,
+    "TeacherId": 11
+  },
+  {
+    "SubjectId": 49,
+    "CourseCode": "CMPE-252",
+    "Name": "Probability and Random Variables Dr.",
+    "Semester": "2nd Semester",
+    "IsLab": false,
+    "TeacherId": 19
+  },
+  {
+    "SubjectId": 50,
+    "CourseCode": "MA-224",
+    "Name": "Multivariate Calculus Dr.",
+    "Semester": "2nd Semester",
+    "IsLab": false,
+    "TeacherId": 18
+  },
+  {
+    "SubjectId": 51,
+    "CourseCode": "",
+    "Name": "Database Systems (Lab Mr.",
+    "Semester": "2nd Semester",
+    "IsLab": true,
+    "TeacherId": 11
+  },
+  {
+    "SubjectId": 52,
+    "CourseCode": "",
+    "Name": "Object Oriented Programming Mr. (Lab # 1",
+    "Semester": "2nd Semester",
+    "IsLab": true,
+    "TeacherId": 12
+  },
+  {
+    "SubjectId": 53,
+    "CourseCode": "",
+    "Name": "Object Oriented Programming Mr.",
+    "Semester": "2nd Semester",
+    "IsLab": false,
+    "TeacherId": 12
+  },
+  {
+    "SubjectId": 54,
+    "CourseCode": "",
+    "Name": "Digital Logic Design Dr.",
+    "Semester": "2nd Semester",
+    "IsLab": false,
+    "TeacherId": 6
+  },
+  {
+    "SubjectId": 55,
+    "CourseCode": "MA-012",
+    "Name": "Basic Math Mr.",
+    "Semester": "2nd Semester",
+    "IsLab": false,
+    "TeacherId": 9
+  },
+  {
+    "SubjectId": 56,
+    "CourseCode": "CSC-102",
+    "Name": "PF Ms.",
+    "Semester": "1st Semester",
+    "IsLab": false,
+    "TeacherId": 13
+  },
+  {
+    "SubjectId": 57,
+    "CourseCode": "CSC-102",
+    "Name": "PF(Lab Ms.",
+    "Semester": "1st Semester",
+    "IsLab": true,
+    "TeacherId": 13
+  },
+  {
+    "SubjectId": 58,
+    "CourseCode": "CSC-100",
+    "Name": "ACIT (Lab # 1 Ms.",
+    "Semester": "1st Semester",
+    "IsLab": true,
+    "TeacherId": 13
+  },
+  {
+    "SubjectId": 59,
+    "CourseCode": "MATH-104",
+    "Name": "Calculus II Dr.",
+    "Semester": "2nd Semester",
+    "IsLab": false,
+    "TeacherId": 18
+  },
+  {
+    "SubjectId": 60,
+    "CourseCode": "HU-102",
+    "Name": "Functional Ms.",
+    "Semester": "2nd Semester",
+    "IsLab": false,
+    "TeacherId": 1
+  }
+]

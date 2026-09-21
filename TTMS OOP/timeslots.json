@@ -1,0 +1,42 @@
+[
+  {
+    "SlotId": 1,
+    "StartTime": "08:00",
+    "EndTime": "09:00"
+  },
+  {
+    "SlotId": 2,
+    "StartTime": "09:00",
+    "EndTime": "10:00"
+  },
+  {
+    "SlotId": 3,
+    "StartTime": "10:00",
+    "EndTime": "11:00"
+  },
+  {
+    "SlotId": 4,
+    "StartTime": "11:00",
+    "EndTime": "12:00"
+  },
+  {
+    "SlotId": 8,
+    "StartTime": "12:00",
+    "EndTime": "01:00"
+  },
+  {
+    "SlotId": 5,
+    "StartTime": "01:00",
+    "EndTime": "02:00"
+  },
+  {
+    "SlotId": 6,
+    "StartTime": "02:00",
+    "EndTime": "03:00"
+  },
+  {
+    "SlotId": 7,
+    "StartTime": "03:00",
+    "EndTime": "04:00"
+  }
+]

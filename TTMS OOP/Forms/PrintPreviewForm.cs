@@ -59,20 +59,21 @@ namespace TTMS_OOP.Forms
             lblStyle.Font = AppFonts.LabelMd;
             lblStyle.ForeColor = AppColors.OnSurfaceVar;
             cmbStyle.Font = AppFonts.BodyMd;
-            cmbStyle.SelectedIndex = 1; // Default to Executive Modern
+            cmbStyle.SelectedIndex = 0; // Default to Official UET Style
             chkMerge.Font = AppFonts.BodyMd;
             chkMerge.ForeColor = AppColors.OnSurface;
 
             lblTitleEdit.Font = AppFonts.LabelMd;
             lblTitleEdit.ForeColor = AppColors.OnSurfaceVar;
             txtTitle.Font = AppFonts.BodyMd;
-            txtTitle.Text = "DEPARTMENT OF COMPUTER SCIENCE";
+            txtTitle.Text = "BSCS, UET Lahore (FSD Campus)";
             txtTitle.TextChanged += (s, e) => Refresh_Preview();
 
             lblDateTimeEdit.Font = AppFonts.LabelMd;
             lblDateTimeEdit.ForeColor = AppColors.OnSurfaceVar;
+            lblDateTimeEdit.Text = "W.e.f Date:";
             txtDateTime.Font = AppFonts.BodyMd;
-            txtDateTime.Text = DateTime.Now.ToString("dddd, dd MMMM yyyy · hh:mm tt");
+            txtDateTime.Text = "14-09-2026";
             txtDateTime.TextChanged += (s, e) => Refresh_Preview();
 
             lblInchargeEdit.Font = AppFonts.LabelMd;
@@ -116,6 +117,11 @@ namespace TTMS_OOP.Forms
         // ── Named event handlers (wired in Designer) ──
         private void CmbSection_Changed(object sender, EventArgs e)
         {
+            if (cmbSection.SelectedItem is Section sec)
+            {
+                string dept = !string.IsNullOrWhiteSpace(sec.Department) ? sec.Department : "BSCS";
+                txtTitle.Text = dept + ", UET Lahore (FSD Campus)";
+            }
             Refresh_Preview();
         }
 
@@ -149,16 +155,32 @@ namespace TTMS_OOP.Forms
             teachers = DataManager.GetTeachers();
             cmbSection.DataSource = null;
             cmbSection.DataSource = sections;
+            if (cmbSection.SelectedItem is Section sec)
+            {
+                string dept = !string.IsNullOrWhiteSpace(sec.Department) ? sec.Department : "BSCS";
+                txtTitle.Text = dept + ", UET Lahore (FSD Campus)";
+            }
         }
 
         private int GetSingleTableHeight()
         {
+            if (cmbStyle != null && cmbStyle.SelectedIndex == 0)
+            {
+                int normalCount = slots != null ? slots.FindAll(s => !IsBreakSlot(s)).Count : 7;
+                int breakCount = slots != null ? slots.FindAll(s => IsBreakSlot(s)).Count : 1;
+                return 75 + 24 + 24 + 24 + (normalCount * 68) + (breakCount * 24) + 48;
+            }
             if (cmbStyle != null && cmbStyle.SelectedIndex == 1)
                 return 145 + (slots != null ? slots.Count * CELL_H : 0) + 75;
             return HEADER_H + DAY_ROW_H + (slots != null ? slots.Count * CELL_H : 0) + 50;
         }
 
-        private int GetTotalTableWidth() => TIME_W + (days.Length * CELL_W);
+        private int GetTotalTableWidth()
+        {
+            if (cmbStyle != null && cmbStyle.SelectedIndex == 0)
+                return 100 + (days.Length * 116); // 680 px for Official UET
+            return TIME_W + (days.Length * CELL_W);
+        }
 
         private void UpdateScrollSize()
         {
@@ -190,16 +212,16 @@ namespace TTMS_OOP.Forms
             if (isMerged)
             {
                 int offsetY = startY;
-                foreach (Section sec in sections)
+                for (int p = 0; p < sections.Count; p++)
                 {
-                    DrawTimetable(e.Graphics, startX, offsetY, sec);
+                    DrawTimetable(e.Graphics, startX, offsetY, sections[p], p + 1);
                     offsetY += GetSingleTableHeight() + TABLE_GAP;
                 }
             }
             else
             {
                 if (cmbSection.SelectedItem == null) return;
-                DrawTimetable(e.Graphics, startX, startY, (Section)cmbSection.SelectedItem);
+                DrawTimetable(e.Graphics, startX, startY, (Section)cmbSection.SelectedItem, 1);
             }
         }
 
@@ -266,15 +288,337 @@ namespace TTMS_OOP.Forms
             return path;
         }
 
-        private void DrawTimetable(Graphics g, int sx, int sy, Section sec)
+        private Image uetLogo = null;
+        private Image GetUetLogo()
+        {
+            if (uetLogo != null) return uetLogo;
+            string[] paths = {
+                System.IO.Path.Combine(Application.StartupPath, "Resources", "uet_logo.png"),
+                System.IO.Path.Combine(Application.StartupPath, "uet_logo.png"),
+                System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Resources", "uet_logo.png"),
+                @"d:\C#\TTMS BY ZAIB\TTMS OOP\Resources\uet_logo.png",
+                @"d:\C#\TTMS BY ZAIB\TTMS OOP\bin\Debug\Resources\uet_logo.png"
+            };
+            foreach (var p in paths)
+            {
+                if (System.IO.File.Exists(p))
+                {
+                    try { uetLogo = Image.FromFile(p); break; } catch { }
+                }
+            }
+            return uetLogo;
+        }
+
+        private int DataManager_ParseTime(string timeStr)
+        {
+            if (string.IsNullOrWhiteSpace(timeStr)) return 0;
+            string[] parts = timeStr.Split(new char[] { ':', ' ', '-' }, StringSplitOptions.RemoveEmptyEntries);
+            if (parts.Length == 0) return 0;
+            if (int.TryParse(parts[0], out int h))
+            {
+                int m = 0;
+                if (parts.Length > 1 && int.TryParse(parts[1], out int mParsed)) m = mParsed;
+                if (h >= 1 && h <= 7) h += 12;
+                return h * 100 + m;
+            }
+            return 0;
+        }
+
+        private void DrawTimetable(Graphics g, int sx, int sy, Section sec, int pageNum = 1)
         {
             if (cmbStyle != null && cmbStyle.SelectedIndex == 1)
             {
                 DrawTimetableExecutive(g, sx, sy, sec);
             }
-            else
+            else if (cmbStyle != null && cmbStyle.SelectedIndex == 2)
             {
                 DrawTimetableClassic(g, sx, sy, sec);
+            }
+            else
+            {
+                DrawTimetableOfficial(g, sx, sy, sec, pageNum);
+            }
+        }
+
+        // ─────────────────────────────────────────
+        // TEMPLATE 0: OFFICIAL UET STYLE
+        // ─────────────────────────────────────────
+        private void DrawTimetableOfficial(Graphics g, int sx, int sy, Section sec, int pageNum = 1)
+        {
+            if (slots == null || slots.Count == 0) return;
+
+            int timeColW = 100;
+            int dayColW = 116;
+            int tableW = timeColW + (days.Length * dayColW); // 680 px
+
+            Font titleFont = new Font("Times New Roman", 11.5f, FontStyle.Bold);
+            Font subHeaderFont = new Font("Calibri", 9f, FontStyle.Bold);
+            Font pageFont = new Font("Calibri", 9.5f, FontStyle.Bold);
+            Font sectionBigFont = new Font("Times New Roman", 13.5f, FontStyle.Bold);
+            Font regularInfoFont = new Font("Calibri", 9f, FontStyle.Regular);
+            Font bannerFont = new Font("Calibri", 9.5f, FontStyle.Bold);
+            Font dayHeaderFont = new Font("Calibri", 9.5f, FontStyle.Bold);
+            Font timeSlotFont = new Font("Calibri", 8.5f, FontStyle.Bold);
+            Font cellCodeFont = new Font("Calibri", 8.5f, FontStyle.Bold);
+            Font cellNameFont = new Font("Calibri", 8f, FontStyle.Regular);
+            Font cellTeacherFont = new Font("Calibri", 8f, FontStyle.Regular);
+            Font cellRoomFont = new Font("Calibri", 7.5f, FontStyle.Regular);
+            Font reservedFont = new Font("Calibri", 7.5f, FontStyle.Bold);
+            Font breakXFont = new Font("Calibri", 9.5f, FontStyle.Bold);
+            Font inchargeFont = new Font("Calibri", 9.5f, FontStyle.Bold);
+
+            Pen pen = Pens.Black;
+            Brush brush = Brushes.Black;
+            StringFormat centerSf = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Center
+            };
+
+            // White canvas fill for the table
+            int totalExpectedH = GetSingleTableHeight();
+            g.FillRectangle(Brushes.White, sx - 10, sy - 10, tableW + 20, totalExpectedH + 20);
+
+            // 1. TOP HEADER BLOCK (Height = 75)
+            // Logo Box (Column 0: Time)
+            g.DrawRectangle(pen, sx, sy, timeColW, 75);
+            Image logo = GetUetLogo();
+            if (logo != null)
+            {
+                int logoW = 64, logoH = 58;
+                int logoX = sx + (timeColW - logoW) / 2;
+                int logoY = sy + (75 - logoH) / 2;
+                g.DrawImage(logo, logoX, logoY, logoW, logoH);
+            }
+
+            // Center Box (Columns 1, 2, 3: width = dayColW * 3 = 348)
+            int centerW = dayColW * 3;
+            g.DrawRectangle(pen, sx + timeColW, sy, centerW, 75);
+            // Split horizontally at sy + 36
+            g.DrawLine(pen, sx + timeColW, sy + 36, sx + timeColW + centerW, sy + 36);
+
+            // Department Title
+            string dept = !string.IsNullOrWhiteSpace(sec.Department) ? sec.Department : "BSCS";
+            string deptTitle = dept + ", UET Lahore (FSD Campus)";
+            if (txtTitle != null && !string.IsNullOrWhiteSpace(txtTitle.Text) && !txtTitle.Text.StartsWith("DEPARTMENT"))
+                deptTitle = txtTitle.Text.Trim();
+            g.DrawString(deptTitle, titleFont, brush, new RectangleF(sx + timeColW, sy, centerW, 36), centerSf);
+
+            // Sub-box divider at Col 3 start (after 2 day columns)
+            int subBox1W = dayColW * 2;
+            g.DrawLine(pen, sx + timeColW + subBox1W, sy + 36, sx + timeColW + subBox1W, sy + 75);
+
+            // Left sub-box: Section Wise Time Table (Fall 2026)
+            g.DrawString("Section Wise Time Table\n(Fall 2026)", subHeaderFont, brush, new RectangleF(sx + timeColW, sy + 36, subBox1W, 39), centerSf);
+
+            // Right sub-box: Rev: 1.0
+            g.DrawString("Rev: 1.0", subHeaderFont, brush, new RectangleF(sx + timeColW + subBox1W, sy + 36, dayColW, 39), centerSf);
+
+            // Right Box (Column 4: Page 1)
+            g.DrawRectangle(pen, sx + timeColW + centerW, sy, dayColW, 75);
+            g.DrawString("Page " + pageNum, pageFont, brush, new RectangleF(sx + timeColW + centerW, sy, dayColW, 75), centerSf);
+
+            // 2. SECTION & SEMESTER INFO ROW (curY = sy + 75, Height = 24)
+            int curY = sy + 75;
+            g.DrawRectangle(pen, sx, curY, tableW, 24);
+
+            // Box 1: Section A (width = timeColW)
+            g.DrawLine(pen, sx + timeColW, curY, sx + timeColW, curY + 24);
+            string secName = "Section " + (sec.Name ?? "A");
+            g.DrawString(secName, sectionBigFont, brush, new RectangleF(sx + 4, curY, timeColW - 6, 24), new StringFormat { LineAlignment = StringAlignment.Center });
+
+            // Box 2: Semester (width = dayColW)
+            g.DrawLine(pen, sx + timeColW + dayColW, curY, sx + timeColW + dayColW, curY + 24);
+            g.DrawString(sec.Semester ?? "1st Semester", regularInfoFont, brush, new RectangleF(sx + timeColW, curY, dayColW, 24), centerSf);
+
+            // Box 3: Empty divider (width = dayColW * 2)
+            g.DrawLine(pen, sx + timeColW + dayColW * 3, curY, sx + timeColW + dayColW * 3, curY + 24);
+
+            // Box 4: W.e.f date (width = dayColW * 2)
+            string wefStr = txtDateTime != null && !string.IsNullOrWhiteSpace(txtDateTime.Text) && txtDateTime.Text.Contains("-") 
+                ? txtDateTime.Text.Trim() 
+                : "14-09-2026";
+            g.DrawString("W.e.f: " + wefStr, regularInfoFont, brush, new RectangleF(sx + timeColW + dayColW * 3, curY, dayColW * 2, 24), centerSf);
+
+            // 3. SESSION BANNER ROW (curY += 24, Height = 24)
+            curY += 24;
+            g.DrawRectangle(pen, sx, curY, tableW, 24);
+            string sessionText = !string.IsNullOrWhiteSpace(sec.Session) ? sec.Session : "Session 2026 (1st semester)";
+            g.DrawString(sessionText, bannerFont, brush, new RectangleF(sx, curY, tableW, 24), centerSf);
+
+            // 4. DAYS HEADER ROW (curY += 24, Height = 24)
+            curY += 24;
+            g.DrawRectangle(pen, sx, curY, timeColW, 24);
+            for (int d = 0; d < days.Length; d++)
+            {
+                int dx = sx + timeColW + (d * dayColW);
+                g.DrawRectangle(pen, dx, curY, dayColW, 24);
+                g.DrawString(days[d], dayHeaderFont, brush, new RectangleF(dx, curY, dayColW, 24), centerSf);
+            }
+
+            // 5. TIME SLOTS ROWS
+            curY += 24;
+
+            var sortedSlots = new List<TimeSlot>(slots);
+            sortedSlots.Sort((a, b) => DataManager_ParseTime(a.StartTime).CompareTo(DataManager_ParseTime(b.StartTime)));
+
+            bool[,] drawn = new bool[sortedSlots.Count, days.Length];
+
+            for (int r = 0; r < sortedSlots.Count; r++)
+            {
+                var slot = sortedSlots[r];
+                bool isBreak = IsBreakSlot(slot);
+                int slotH = isBreak ? 24 : 68;
+
+                // Time cell
+                g.DrawRectangle(pen, sx, curY, timeColW, slotH);
+                string timeStr = FormatTime(slot.StartTime) + " - " + FormatTime(slot.EndTime);
+                g.DrawString(timeStr, timeSlotFont, brush, new RectangleF(sx, curY, timeColW, slotH), centerSf);
+
+                for (int d = 0; d < days.Length; d++)
+                {
+                    if (drawn[r, d]) continue;
+
+                    int cellX = sx + timeColW + (d * dayColW);
+
+                    // 12:00 - 01:00 Break slot
+                    if (isBreak)
+                    {
+                        g.DrawRectangle(pen, cellX, curY, dayColW, slotH);
+                        g.DrawString("x", breakXFont, brush, new RectangleF(cellX, curY, dayColW, slotH), centerSf);
+                        drawn[r, d] = true;
+                        continue;
+                    }
+
+                    // Friday 01:00 - 02:00 prayer break
+                    string slotStart = (slot.StartTime ?? "").Trim();
+                    bool isFri1to2 = (d == 4 && (slotStart == "1" || slotStart == "01:00" || slotStart.StartsWith("1:")));
+                    var entry = GetEntry(sec, slot.SlotId, days[d]);
+
+                    if (isFri1to2 && entry == null)
+                    {
+                        g.DrawRectangle(pen, cellX, curY, dayColW, slotH);
+                        g.DrawString("x", breakXFont, brush, new RectangleF(cellX, curY, dayColW, slotH), centerSf);
+                        drawn[r, d] = true;
+                        continue;
+                    }
+
+                    if (entry == null)
+                    {
+                        g.DrawRectangle(pen, cellX, curY, dayColW, slotH);
+                        drawn[r, d] = true;
+                        continue;
+                    }
+
+                    // Multi-hour merging
+                    int span = 1;
+                    int mergedH = slotH;
+                    for (int nr = r + 1; nr < sortedSlots.Count; nr++)
+                    {
+                        var nextSlot = sortedSlots[nr];
+                        if (IsBreakSlot(nextSlot)) break;
+                        var nextEntry = GetEntry(sec, nextSlot.SlotId, days[d]);
+                        if (IsSameEntry(entry, nextEntry))
+                        {
+                            span++;
+                            drawn[nr, d] = true;
+                            mergedH += 68;
+                        }
+                        else break;
+                    }
+
+                    drawn[r, d] = true;
+                    Rectangle cellRect = new Rectangle(cellX, curY, dayColW, mergedH);
+                    g.DrawRectangle(pen, cellRect);
+
+                    if (entry.IsReserved)
+                    {
+                        g.DrawString("RESERVED FOR\nTUTORIAL/\nSEMINAR/\nCOUNSELLING\nSESSIONS", reservedFont, brush, new RectangleF(cellX + 2, curY, dayColW - 4, mergedH), centerSf);
+                    }
+                    else if (!string.IsNullOrEmpty(entry.CustomText))
+                    {
+                        g.DrawString(entry.CustomText, cellNameFont, brush, new RectangleF(cellX + 2, curY, dayColW - 4, mergedH), centerSf);
+                    }
+                    else
+                    {
+                        Subject subj = subjects.Find(s => s.SubjectId == entry.SubjectId);
+                        int tid = entry.TeacherId > 0 ? entry.TeacherId : (subj != null ? subj.TeacherId : 0);
+                        Teacher tchr = tid > 0 ? teachers.Find(t => t.TeacherId == tid) : null;
+
+                        DrawOfficialCellText(g, cellRect, subj, tchr, cellCodeFont, cellNameFont, cellTeacherFont, cellRoomFont);
+                    }
+                }
+
+                curY += slotH;
+            }
+
+            int totalH = curY;
+
+            // 6. FOOTER
+            string incharge = txtIncharge != null && !string.IsNullOrWhiteSpace(txtIncharge.Text) ? txtIncharge.Text.Trim() : "Mr. Mohsin Sheraz";
+            string inchargeText = "Time table Incharge: " + incharge;
+            SizeF inchargeSz = g.MeasureString(inchargeText, inchargeFont);
+            g.DrawString(inchargeText, inchargeFont, brush, sx + tableW - inchargeSz.Width, totalH + 10);
+
+            // Stealth watermark 1258
+            Font hiddenFont = new Font("Segoe UI", 6.5f, FontStyle.Regular);
+            Brush hiddenBrush = new SolidBrush(Color.FromArgb(195, 202, 215));
+            g.DrawString("1258", hiddenFont, hiddenBrush, sx + tableW - 24, totalH + 28);
+        }
+
+        private void DrawOfficialCellText(Graphics g, Rectangle rect, Subject subj, Teacher tchr, Font codeFont, Font nameFont, Font teacherFont, Font roomFont)
+        {
+            if (subj == null) return;
+
+            string code = (subj.CourseCode ?? "").Trim();
+            string name = (subj.Name ?? "").Trim();
+            string teacher = tchr != null ? tchr.ToString() : "";
+            string room = "";
+
+            if (name.Contains("TF-03") || name.Contains("TF- 03"))
+            {
+                room = "BSH TF-03";
+                name = name.Replace("BSH TF-03", "").Replace("TF-03", "").Replace("TF- 03", "").Trim();
+            }
+
+            if (!string.IsNullOrEmpty(code) && name.StartsWith(code, StringComparison.OrdinalIgnoreCase))
+            {
+                name = name.Substring(code.Length).Trim();
+            }
+
+            List<Tuple<string, Font>> lines = new List<Tuple<string, Font>>();
+            if (!string.IsNullOrEmpty(code))
+                lines.Add(Tuple.Create(code, codeFont));
+            if (!string.IsNullOrEmpty(name))
+                lines.Add(Tuple.Create(name, nameFont));
+            if (!string.IsNullOrEmpty(teacher))
+                lines.Add(Tuple.Create(teacher, teacherFont));
+            if (!string.IsNullOrEmpty(room))
+                lines.Add(Tuple.Create(room, roomFont));
+
+            float totalH = 0;
+            float lineSpacing = 1.5f;
+            List<float> heights = new List<float>();
+            foreach (var item in lines)
+            {
+                SizeF sz = g.MeasureString(item.Item1, item.Item2, rect.Width - 4);
+                heights.Add(sz.Height);
+                totalH += sz.Height + lineSpacing;
+            }
+
+            float curY = rect.Y + Math.Max(2, (rect.Height - totalH) / 2);
+            StringFormat sf = new StringFormat
+            {
+                Alignment = StringAlignment.Center,
+                LineAlignment = StringAlignment.Near,
+                Trimming = StringTrimming.EllipsisWord
+            };
+
+            for (int i = 0; i < lines.Count; i++)
+            {
+                RectangleF lineRect = new RectangleF(rect.X + 2, curY, rect.Width - 4, heights[i]);
+                g.DrawString(lines[i].Item1, lines[i].Item2, Brushes.Black, lineRect, sf);
+                curY += heights[i] + lineSpacing;
             }
         }
 
@@ -794,20 +1138,21 @@ namespace TTMS_OOP.Forms
 
         private void BtnPrint_Click(object sender, EventArgs e)
         {
+            bool isOfficial = cmbStyle == null || cmbStyle.SelectedIndex == 0;
             if (isMerged)
             {
                 if (sections == null || sections.Count == 0)
                 { MessageBox.Show("No sections found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning); return; }
                 int currentPage = 0;
                 PrintDocument pd = new PrintDocument();
-                pd.DefaultPageSettings.Landscape = true;
+                pd.DefaultPageSettings.Landscape = !isOfficial;
                 pd.BeginPrint += (s, ev) => { currentPage = 0; };
                 pd.PrintPage += (s, ev) => {
                     ev.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
                     ev.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
                     int pageW = ev.PageBounds.Width, tableW = GetTotalTableWidth();
-                    int startX = Math.Max(30, (pageW - tableW) / 2);
-                    DrawTimetable(ev.Graphics, startX, 30, sections[currentPage]);
+                    int startX = Math.Max(20, (pageW - tableW) / 2);
+                    DrawTimetable(ev.Graphics, startX, isOfficial ? 35 : 30, sections[currentPage], currentPage + 1);
                     currentPage++;
                     ev.HasMorePages = currentPage < sections.Count;
                 };
@@ -819,13 +1164,13 @@ namespace TTMS_OOP.Forms
                 if (cmbSection.SelectedItem == null) return;
                 Section sec = (Section)cmbSection.SelectedItem;
                 PrintDocument pd = new PrintDocument();
-                pd.DefaultPageSettings.Landscape = true;
+                pd.DefaultPageSettings.Landscape = !isOfficial;
                 pd.PrintPage += (s, ev) => {
                     ev.Graphics.SmoothingMode = SmoothingMode.AntiAlias;
                     ev.Graphics.TextRenderingHint = System.Drawing.Text.TextRenderingHint.ClearTypeGridFit;
                     int pageW = ev.PageBounds.Width, tableW = GetTotalTableWidth();
-                    int startX = Math.Max(30, (pageW - tableW) / 2);
-                    DrawTimetable(ev.Graphics, startX, 30, sec);
+                    int startX = Math.Max(20, (pageW - tableW) / 2);
+                    DrawTimetable(ev.Graphics, startX, isOfficial ? 35 : 30, sec, 1);
                     ev.HasMorePages = false;
                 };
                 var ppd = new System.Windows.Forms.PrintPreviewDialog();

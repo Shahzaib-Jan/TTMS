@@ -1,0 +1,72 @@
+[
+  {
+    "SectionId": 1,
+    "Name": "A",
+    "Semester": "1st Semester",
+    "Session": "Session 2026 (1st semester)",
+    "Department": "BSCS"
+  },
+  {
+    "SectionId": 2,
+    "Name": "B",
+    "Semester": "1st Semester",
+    "Session": "Session 2026 (1st semester)",
+    "Department": "BSCS"
+  },
+  {
+    "SectionId": 3,
+    "Name": "A",
+    "Semester": "3rd Semester",
+    "Session": "Session 2025 (3rd semester)",
+    "Department": "BSCS"
+  },
+  {
+    "SectionId": 4,
+    "Name": "C",
+    "Semester": "3rd Semester",
+    "Session": "Session 2025 (3rd semester)",
+    "Department": "BSCS"
+  },
+  {
+    "SectionId": 5,
+    "Name": "A",
+    "Semester": "5th Semester",
+    "Session": "Session 2024 (5th semester)",
+    "Department": "BSCS"
+  },
+  {
+    "SectionId": 6,
+    "Name": "A",
+    "Semester": "7th Semester",
+    "Session": "Session 2023 (7th semester)",
+    "Department": "BSCS"
+  },
+  {
+    "SectionId": 7,
+    "Name": "A",
+    "Semester": "1st Semester",
+    "Session": "Session 2026 (1st semester)",
+    "Department": "BSCYS"
+  },
+  {
+    "SectionId": 8,
+    "Name": "A",
+    "Semester": "2nd Semester",
+    "Session": "Session 2026 (2nd semester)",
+    "Department": "BSCYS"
+  },
+  {
+    "SectionId": 9,
+    "Name": "A",
+    "Semester": "1st Semester",
+    "Session": "Session 2026 (1st semester)",
+    "Department": "BSDS"
+  },
+  {
+    "SectionId": 10,
+    "Name": "A",
+    "Semester": "2nd Semester",
+    "Session": "Session 2026 (2nd semester)",
+    "Department": "BSDS"
+  }
+]

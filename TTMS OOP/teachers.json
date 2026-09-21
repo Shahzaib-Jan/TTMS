@@ -1,0 +1,122 @@
+[
+  {
+    "TeacherId": 1,
+    "Name": "Sana Idress",
+    "Designation": "Ms.",
+    "FullName": "Ms. Sana Idress"
+  },
+  {
+    "TeacherId": 2,
+    "Name": "Sonia",
+    "Designation": "Ms.",
+    "FullName": "Ms. Sonia"
+  },
+  {
+    "TeacherId": 3,
+    "Name": "Minahil Aslam",
+    "Designation": "Ms.",
+    "FullName": "Ms. Minahil Aslam"
+  },
+  {
+    "TeacherId": 4,
+    "Name": "Rida Zaheer",
+    "Designation": "Dr.",
+    "FullName": "Dr. Rida Zaheer"
+  },
+  {
+    "TeacherId": 5,
+    "Name": "Muhammad Tahir",
+    "Designation": "Mr.",
+    "FullName": "Mr. Muhammad Tahir"
+  },
+  {
+    "TeacherId": 6,
+    "Name": "Asim Naveed",
+    "Designation": "Dr.",
+    "FullName": "Dr. Asim Naveed"
+  },
+  {
+    "TeacherId": 7,
+    "Name": "Aslam",
+    "Designation": "Dr.",
+    "FullName": "Dr. Aslam"
+  },
+  {
+    "TeacherId": 8,
+    "Name": "Saira",
+    "Designation": "Ms.",
+    "FullName": "Ms. Saira"
+  },
+  {
+    "TeacherId": 9,
+    "Name": "Fazal",
+    "Designation": "Mr.",
+    "FullName": "Mr. Fazal"
+  },
+  {
+    "TeacherId": 10,
+    "Name": "Nosheen",
+    "Designation": "Ms.",
+    "FullName": "Ms. Nosheen"
+  },
+  {
+    "TeacherId": 11,
+    "Name": "Mohsin Sheraz",
+    "Designation": "Mr.",
+    "FullName": "Mr. Mohsin Sheraz"
+  },
+  {
+    "TeacherId": 12,
+    "Name": "Talha",
+    "Designation": "Mr.",
+    "FullName": "Mr. Talha"
+  },
+  {
+    "TeacherId": 13,
+    "Name": "Kalsoom",
+    "Designation": "Ms.",
+    "FullName": "Ms. Kalsoom"
+  },
+  {
+    "TeacherId": 14,
+    "Name": "Muhammad Yasir",
+    "Designation": "Dr.",
+    "FullName": "Dr. Muhammad Yasir"
+  },
+  {
+    "TeacherId": 15,
+    "Name": "Hammad Riaz",
+    "Designation": "Mr.",
+    "FullName": "Mr. Hammad Riaz"
+  },
+  {
+    "TeacherId": 16,
+    "Name": "Visiting",
+    "Designation": "",
+    "FullName": "Visiting"
+  },
+  {
+    "TeacherId": 17,
+    "Name": "Ilyas Ali",
+    "Designation": "Dr.",
+    "FullName": "Dr. Ilyas Ali"
+  },
+  {
+    "TeacherId": 18,
+    "Name": "Abdurehman",
+    "Designation": "Dr.",
+    "FullName": "Dr. Abdurehman"
+  },
+  {
+    "TeacherId": 19,
+    "Name": "Shazia",
+    "Designation": "Dr.",
+    "FullName": "Dr. Shazia"
+  },
+  {
+    "TeacherId": 20,
+    "Name": "Sonia Saman",
+    "Designation": "",
+    "FullName": "Sonia Saman"
+  }
+]
