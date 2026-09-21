@@ -69,12 +69,11 @@ namespace TTMS_OOP.Forms
             this.cmbStyle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStyle.FormattingEnabled = true;
             this.cmbStyle.Items.AddRange(new object[] {
-            "Official UET Style",
-            "Executive Modern",
-            "Classic Style"});
+            "Classic Style",
+            "Executive Modern"});
             this.cmbStyle.Location = new System.Drawing.Point(226, 10);
             this.cmbStyle.Name = "cmbStyle";
-            this.cmbStyle.Size = new System.Drawing.Size(140, 25);
+            this.cmbStyle.Size = new System.Drawing.Size(130, 25);
             this.cmbStyle.SelectedIndexChanged += new System.EventHandler(this.CmbStyle_Changed);
             // 
             // chkMerge
