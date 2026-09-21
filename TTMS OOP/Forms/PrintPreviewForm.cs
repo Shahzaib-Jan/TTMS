@@ -395,7 +395,8 @@ namespace TTMS_OOP.Forms
                     {
                         g.FillRectangle(new SolidBrush(Color.FromArgb(245, 245, 248)), x, y, CELL_W, mergedH);
                         g.DrawRectangle(borderPen, x, y, CELL_W, mergedH);
-                        DrawCenteredString(g, "RESERVED\nTutorial/Seminar", teacherFont, new SolidBrush(Color.FromArgb(150,150,160)), x, y, CELL_W, mergedH);
+                        Font resFont = new Font("Segoe UI", 8.5f, FontStyle.Bold);
+                        DrawCenteredString(g, "RESERVED", resFont, new SolidBrush(Color.FromArgb(140, 140, 150)), x, y, CELL_W, mergedH);
                     }
                     else if (!string.IsNullOrEmpty(entry.CustomText))
                     {
@@ -417,7 +418,7 @@ namespace TTMS_OOP.Forms
                             g.DrawRectangle(borderPen, x, y, CELL_W, mergedH);
                             g.FillRectangle(new SolidBrush(fg), x, y, 4, mergedH);
                             int labReserve = subj.IsLab ? 36 : 0;
-                            float maxTitleH = span > 1 ? 40f : 24f;
+                            float maxTitleH = (tchr != null) ? (span > 1 ? 40f : 24f) : (mergedH - 14f);
                             RectangleF subjRect = new RectangleF(x + 8, y + 5, CELL_W - 16 - labReserve, maxTitleH);
                             float sFontSize = 8f;
                             Font dynamicSubjFont = new Font("Segoe UI", sFontSize, FontStyle.Bold);
@@ -710,7 +711,8 @@ namespace TTMS_OOP.Forms
                             g.FillPath(new SolidBrush(Color.FromArgb(246, 247, 250)), path);
                             g.DrawPath(new Pen(Color.FromArgb(220, 222, 230), 1f), path);
                         }
-                        DrawCenteredString(g, "RESERVED\nTutorial/Seminar", teacherFont, new SolidBrush(Color.FromArgb(140, 145, 155)), x, y, CELL_W, mergedH);
+                        Font resFont = new Font("Segoe UI", 8.5f, FontStyle.Bold);
+                        DrawCenteredString(g, "RESERVED", resFont, new SolidBrush(Color.FromArgb(130, 135, 145)), x, y, CELL_W, mergedH);
                     }
                     else if (!string.IsNullOrEmpty(entry.CustomText))
                     {
@@ -741,7 +743,7 @@ namespace TTMS_OOP.Forms
                             }
 
                             int labReserve = subj.IsLab ? 36 : 0;
-                            float maxTitleH = span > 1 ? 40f : 24f;
+                            float maxTitleH = (tchr != null) ? (span > 1 ? 40f : 24f) : (mergedH - 14f);
                             RectangleF subjRect = new RectangleF(cardRect.X + 8, cardRect.Y + 5, cardRect.Width - 16 - labReserve, maxTitleH);
                             float sFontSize = 8f;
                             Font dynamicSubjFont = new Font("Segoe UI", sFontSize, FontStyle.Bold);

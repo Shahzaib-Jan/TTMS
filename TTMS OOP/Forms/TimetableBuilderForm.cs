@@ -326,7 +326,7 @@ namespace TTMS_OOP.Forms
                 accentColor = Color.FromArgb(156, 163, 175);
                 titleColor = Color.FromArgb(55, 65, 81);
                 titleText = "RESERVED";
-                subtitleText = "Tutorial / Seminar / Meeting";
+                subtitleText = "";
                 badgeText = "RESERVED";
                 badgeBg = Color.FromArgb(229, 231, 235);
                 badgeFg = Color.FromArgb(75, 85, 99);
@@ -338,7 +338,7 @@ namespace TTMS_OOP.Forms
                 accentColor = AppColors.Primary;
                 titleColor = AppColors.Primary;
                 titleText = entry.CustomText;
-                subtitleText = "Special Scheduled Slot";
+                subtitleText = "";
             }
             else
             {
@@ -350,7 +350,7 @@ namespace TTMS_OOP.Forms
 
                 courseCode = (subj != null && !string.IsNullOrWhiteSpace(subj.CourseCode)) ? subj.CourseCode.Trim() : "";
                 titleText = subj != null ? subj.Name : "Unknown Subject";
-                subtitleText = tchr != null ? tchr.ToString() : "No Teacher Assigned";
+                subtitleText = tchr != null ? tchr.ToString() : "";
 
                 if (hasConflict)
                 {
@@ -443,12 +443,16 @@ namespace TTMS_OOP.Forms
             // Draw Subject / Course Code Title (Auto-fit font and wrap so full name always displays)
             int textLeft = cardRect.X + 10;
             int textWidth = cardRect.Width - 16 - (badgeWidth > 0 ? badgeWidth + 4 : 0);
-            Rectangle titleRect = new Rectangle(textLeft, cardRect.Y + 6, textWidth, 34);
 
-            float titleFontSize = 8.5f;
+            bool hasSubtitle = !string.IsNullOrWhiteSpace(subtitleText);
+            int titleMaxHeight = hasSubtitle ? 34 : (cardRect.Height - 16);
+            int titleTop = hasSubtitle ? (cardRect.Y + 6) : (cardRect.Y + 8);
+            Rectangle titleRect = new Rectangle(textLeft, titleTop, textWidth, titleMaxHeight);
+
+            float titleFontSize = hasSubtitle ? 8.5f : 9f;
             Font titleFont = new Font("Segoe UI", titleFontSize, FontStyle.Bold);
             SizeF titleSize = g.MeasureString(titleText, titleFont, textWidth);
-            while (titleSize.Height > 36 && titleFontSize > 6.8f)
+            while (titleSize.Height > titleMaxHeight && titleFontSize > 6.8f)
             {
                 titleFont.Dispose();
                 titleFontSize -= 0.4f;
@@ -467,36 +471,39 @@ namespace TTMS_OOP.Forms
                 g.DrawString(titleText, titleFont, titleBrush, titleRect, sf);
             }
 
-            // Draw Teacher / Subtitle (Auto-fit so full name is ALWAYS completely visible)
-            float teacherY = cardRect.Y + Math.Max(26, titleSize.Height + 5);
-            if (teacherY + 18 > cardRect.Bottom - 4)
-                teacherY = cardRect.Bottom - 20;
-
-            bool overlapsWithCode = !string.IsNullOrEmpty(courseCode) && teacherY >= cardRect.Bottom - 22;
-            int subWidth = cardRect.Width - 16 - (overlapsWithCode ? 55 : 0);
-            Rectangle subRect = new Rectangle(textLeft, (int)teacherY, subWidth, 18);
-
-            float tFontSize = 8f;
-            Font subFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
-            SizeF tSize = g.MeasureString(subtitleText, subFont);
-            while (tSize.Width > subWidth && tFontSize > 6.4f)
+            // Draw Teacher / Subtitle ONLY if present
+            if (hasSubtitle)
             {
-                subFont.Dispose();
-                tFontSize -= 0.3f;
-                subFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
-                tSize = g.MeasureString(subtitleText, subFont);
-            }
+                float teacherY = cardRect.Y + Math.Max(26, titleSize.Height + 5);
+                if (teacherY + 18 > cardRect.Bottom - 4)
+                    teacherY = cardRect.Bottom - 20;
 
-            using (subFont)
-            using (SolidBrush subBrush = new SolidBrush(subtitleColor))
-            using (StringFormat sf = new StringFormat
-            {
-                Trimming = StringTrimming.EllipsisWord,
-                FormatFlags = StringFormatFlags.NoWrap,
-                LineAlignment = StringAlignment.Center
-            })
-            {
-                g.DrawString(subtitleText, subFont, subBrush, subRect, sf);
+                bool overlapsWithCode = !string.IsNullOrEmpty(courseCode) && teacherY >= cardRect.Bottom - 22;
+                int subWidth = cardRect.Width - 16 - (overlapsWithCode ? 55 : 0);
+                Rectangle subRect = new Rectangle(textLeft, (int)teacherY, subWidth, 18);
+
+                float tFontSize = 8f;
+                Font subFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
+                SizeF tSize = g.MeasureString(subtitleText, subFont);
+                while (tSize.Width > subWidth && tFontSize > 6.4f)
+                {
+                    subFont.Dispose();
+                    tFontSize -= 0.3f;
+                    subFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
+                    tSize = g.MeasureString(subtitleText, subFont);
+                }
+
+                using (subFont)
+                using (SolidBrush subBrush = new SolidBrush(subtitleColor))
+                using (StringFormat sf = new StringFormat
+                {
+                    Trimming = StringTrimming.EllipsisWord,
+                    FormatFlags = StringFormatFlags.NoWrap,
+                    LineAlignment = StringAlignment.Center
+                })
+                {
+                    g.DrawString(subtitleText, subFont, subBrush, subRect, sf);
+                }
             }
 
             // Draw Course Code in down right corner
