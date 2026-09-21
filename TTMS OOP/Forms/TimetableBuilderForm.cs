@@ -185,7 +185,7 @@ namespace TTMS_OOP.Forms
                 DataGridViewTextBoxColumn col = new DataGridViewTextBoxColumn();
                 col.Name = day;
                 col.HeaderText = day;
-                col.Width = 205;
+                col.Width = 220;
                 col.SortMode = DataGridViewColumnSortMode.NotSortable;
                 grid.Columns.Add(col);
             }
@@ -194,7 +194,7 @@ namespace TTMS_OOP.Forms
             {
                 int rowIndex = grid.Rows.Add();
                 grid.Rows[rowIndex].HeaderCell.Value = slot.StartTime + "\n" + slot.EndTime;
-                grid.Rows[rowIndex].Height = 72;
+                grid.Rows[rowIndex].Height = 80;
                 grid.Rows[rowIndex].Tag = slot.SlotId;
             }
             RefreshGrid();
@@ -440,17 +440,28 @@ namespace TTMS_OOP.Forms
                 }
             }
 
-            // Draw Subject / Course Code Title
+            // Draw Subject / Course Code Title (Auto-fit font and wrap so full name always displays)
             int textLeft = cardRect.X + 10;
             int textWidth = cardRect.Width - 16 - (badgeWidth > 0 ? badgeWidth + 4 : 0);
-            Rectangle titleRect = new Rectangle(textLeft, cardRect.Y + 8, textWidth, 22);
-            using (Font titleFont = new Font("Segoe UI", 8.5f, FontStyle.Bold))
+            Rectangle titleRect = new Rectangle(textLeft, cardRect.Y + 6, textWidth, 34);
+
+            float titleFontSize = 8.5f;
+            Font titleFont = new Font("Segoe UI", titleFontSize, FontStyle.Bold);
+            SizeF titleSize = g.MeasureString(titleText, titleFont, textWidth);
+            while (titleSize.Height > 36 && titleFontSize > 6.8f)
+            {
+                titleFont.Dispose();
+                titleFontSize -= 0.4f;
+                titleFont = new Font("Segoe UI", titleFontSize, FontStyle.Bold);
+                titleSize = g.MeasureString(titleText, titleFont, textWidth);
+            }
+
+            using (titleFont)
             using (SolidBrush titleBrush = new SolidBrush(titleColor))
             using (StringFormat sf = new StringFormat
             {
-                Trimming = StringTrimming.EllipsisCharacter,
-                FormatFlags = StringFormatFlags.NoWrap,
-                LineAlignment = StringAlignment.Center
+                Trimming = StringTrimming.EllipsisWord,
+                LineAlignment = StringAlignment.Near
             })
             {
                 g.DrawString(titleText, titleFont, titleBrush, titleRect, sf);
@@ -458,8 +469,11 @@ namespace TTMS_OOP.Forms
 
             // Draw Teacher / Subtitle
             int subWidth = cardRect.Width - 16 - (!string.IsNullOrEmpty(courseCode) ? 65 : 0);
-            Rectangle subRect = new Rectangle(textLeft, cardRect.Y + 32, subWidth, 20);
-            using (Font subFont = new Font("Segoe UI", 8f, FontStyle.Regular))
+            float teacherY = cardRect.Y + Math.Max(26, titleSize.Height + 5);
+            if (teacherY + 18 > cardRect.Bottom - 4)
+                teacherY = cardRect.Bottom - 22;
+            Rectangle subRect = new Rectangle(textLeft, (int)teacherY, subWidth, 18);
+            using (Font subFont = new Font("Segoe UI", 7.8f, FontStyle.Regular))
             using (SolidBrush subBrush = new SolidBrush(subtitleColor))
             using (StringFormat sf = new StringFormat
             {

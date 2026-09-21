@@ -2,7 +2,7 @@
   {
     "SubjectId": 1,
     "CourseCode": "HU-102",
-    "Name": "Functional Ms.",
+    "Name": "Functional English",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 1
@@ -10,23 +10,23 @@
   {
     "SubjectId": 2,
     "CourseCode": "HU-240",
-    "Name": "Psychology Ms.",
+    "Name": "Introduction to Psychology",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 2
   },
   {
     "SubjectId": 3,
-    "CourseCode": "",
-    "Name": "Calculus and Analytical Geometry Ms.",
+    "CourseCode": "MA-101",
+    "Name": "Calculus and Analytical Geometry",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 3
   },
   {
     "SubjectId": 4,
-    "CourseCode": "",
-    "Name": "Quantitative Reasoning-I Dr.",
+    "CourseCode": "QR-101",
+    "Name": "Quantitative Reasoning-I",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 4
@@ -34,7 +34,7 @@
   {
     "SubjectId": 5,
     "CourseCode": "CSC-102",
-    "Name": "Programming Fundamentals Mr.",
+    "Name": "Programming Fundamentals",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 5
@@ -42,7 +42,7 @@
   {
     "SubjectId": 6,
     "CourseCode": "CSC-100",
-    "Name": "ACIT Dr.",
+    "Name": "Applications of Information & Communication Technologies",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 6
@@ -50,23 +50,23 @@
   {
     "SubjectId": 7,
     "CourseCode": "MA-011",
-    "Name": "Basic Math BSH TF-03",
+    "Name": "Basic Mathematics",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 0
   },
   {
     "SubjectId": 8,
-    "CourseCode": "",
-    "Name": "AICT(Lab-2 Dr.",
+    "CourseCode": "CSC-100",
+    "Name": "Applications of Information & Communication Technologies",
     "Semester": "1st Semester",
     "IsLab": true,
     "TeacherId": 6
   },
   {
     "SubjectId": 9,
-    "CourseCode": "",
-    "Name": "PF(Lab-2 Mr.",
+    "CourseCode": "CSC-102",
+    "Name": "Programming Fundamentals",
     "Semester": "1st Semester",
     "IsLab": true,
     "TeacherId": 5
@@ -74,7 +74,7 @@
   {
     "SubjectId": 10,
     "CourseCode": "CSC-102",
-    "Name": "PF (Lab # 2 Mr.",
+    "Name": "Programming Fundamentals",
     "Semester": "1st Semester",
     "IsLab": true,
     "TeacherId": 5
@@ -82,7 +82,7 @@
   {
     "SubjectId": 11,
     "CourseCode": "CSC-100",
-    "Name": "ACIT(Lab Dr.",
+    "Name": "Applications of Information & Communication Technologies",
     "Semester": "1st Semester",
     "IsLab": true,
     "TeacherId": 6
@@ -90,15 +90,15 @@
   {
     "SubjectId": 12,
     "CourseCode": "IS-104",
-    "Name": "Islamic Studies Dr.",
+    "Name": "Islamic Studies",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 7
   },
   {
     "SubjectId": 13,
-    "CourseCode": "HU102",
-    "Name": "Functional English Ms.",
+    "CourseCode": "HU-102",
+    "Name": "Functional English",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 8
@@ -106,7 +106,7 @@
   {
     "SubjectId": 14,
     "CourseCode": "CSC-200",
-    "Name": "DSA Ms.",
+    "Name": "Data Structures & Algorithms",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 10
@@ -114,15 +114,15 @@
   {
     "SubjectId": 15,
     "CourseCode": "MA-234",
-    "Name": "Linear Algebra Mr.",
+    "Name": "Linear Algebra",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 9
   },
   {
     "SubjectId": 16,
-    "CourseCode": "",
-    "Name": "CN(Lab Mr.",
+    "CourseCode": "CSC-203",
+    "Name": "Computer Networks",
     "Semester": "3rd Semester",
     "IsLab": true,
     "TeacherId": 11
@@ -130,7 +130,7 @@
   {
     "SubjectId": 17,
     "CourseCode": "CSC-203",
-    "Name": "CN Mr.",
+    "Name": "Computer Networks",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 11
@@ -138,15 +138,15 @@
   {
     "SubjectId": 18,
     "CourseCode": "CSC-204",
-    "Name": "SE Mr.",
+    "Name": "Software Engineering",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 12
   },
   {
     "SubjectId": 19,
-    "CourseCode": "",
-    "Name": "DSA(Lab Ms.",
+    "CourseCode": "CSC-200",
+    "Name": "Data Structures & Algorithms",
     "Semester": "3rd Semester",
     "IsLab": true,
     "TeacherId": 10
@@ -154,7 +154,7 @@
   {
     "SubjectId": 20,
     "CourseCode": "CSC-204",
-    "Name": "Software Engineering Mr.",
+    "Name": "Software Engineering",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 12
@@ -162,7 +162,7 @@
   {
     "SubjectId": 21,
     "CourseCode": "CSC-203",
-    "Name": "Computer Networks Mr.",
+    "Name": "Computer Networks",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 11
@@ -170,7 +170,7 @@
   {
     "SubjectId": 22,
     "CourseCode": "HU-102",
-    "Name": "Functional English Ms.",
+    "Name": "Functional English",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 8
@@ -178,7 +178,7 @@
   {
     "SubjectId": 23,
     "CourseCode": "CSC-203",
-    "Name": "Computer Networks(Lab Mr.",
+    "Name": "Computer Networks",
     "Semester": "3rd Semester",
     "IsLab": true,
     "TeacherId": 11
@@ -186,7 +186,7 @@
   {
     "SubjectId": 24,
     "CourseCode": "CSC-200",
-    "Name": "DSA(Lab Ms.",
+    "Name": "Data Structures & Algorithms",
     "Semester": "3rd Semester",
     "IsLab": true,
     "TeacherId": 10
@@ -194,7 +194,7 @@
   {
     "SubjectId": 25,
     "CourseCode": "MA-012",
-    "Name": "Basic Math Mr.",
+    "Name": "Basic Mathematics",
     "Semester": "3rd Semester",
     "IsLab": false,
     "TeacherId": 9
@@ -202,7 +202,7 @@
   {
     "SubjectId": 26,
     "CourseCode": "HU-240",
-    "Name": "Psychology Ms.",
+    "Name": "Introduction to Psychology",
     "Semester": "5th Semester",
     "IsLab": false,
     "TeacherId": 2
@@ -210,7 +210,7 @@
   {
     "SubjectId": 27,
     "CourseCode": "CSC-301",
-    "Name": "Introduction to Human Computer Interaction Mr.",
+    "Name": "Introduction to Human Computer Interaction",
     "Semester": "5th Semester",
     "IsLab": false,
     "TeacherId": 12
@@ -218,31 +218,31 @@
   {
     "SubjectId": 28,
     "CourseCode": "CSC-300",
-    "Name": "Operating Systems Ms.",
+    "Name": "Operating Systems",
     "Semester": "5th Semester",
     "IsLab": false,
     "TeacherId": 10
   },
   {
     "SubjectId": 29,
-    "CourseCode": "",
-    "Name": "Electives Course Dr.",
+    "CourseCode": "CSC-350",
+    "Name": "Elective Course",
     "Semester": "5th Semester",
     "IsLab": false,
     "TeacherId": 14
   },
   {
     "SubjectId": 30,
-    "CourseCode": "CSC351",
-    "Name": "Machine Learning Dr.Rida",
+    "CourseCode": "CSC-351",
+    "Name": "Machine Learning",
     "Semester": "5th Semester",
     "IsLab": false,
-    "TeacherId": 0
+    "TeacherId": 4
   },
   {
     "SubjectId": 31,
-    "CourseCode": "CSC-302Computer",
-    "Name": "Architecture Ms.",
+    "CourseCode": "CSC-302",
+    "Name": "Computer Architecture",
     "Semester": "5th Semester",
     "IsLab": false,
     "TeacherId": 13
@@ -250,31 +250,31 @@
   {
     "SubjectId": 32,
     "CourseCode": "CSC-300",
-    "Name": "Operating Systems(Lab Ms.",
+    "Name": "Operating Systems",
     "Semester": "5th Semester",
     "IsLab": true,
     "TeacherId": 10
   },
   {
     "SubjectId": 33,
-    "CourseCode": "CSC454",
-    "Name": "Agent Based Modelling Dr.",
+    "CourseCode": "CSC-454",
+    "Name": "Agent Based Modelling",
     "Semester": "7th Semester",
     "IsLab": false,
     "TeacherId": 14
   },
   {
     "SubjectId": 34,
-    "CourseCode": "MGT349",
-    "Name": "Entrepreneurship Mr.",
+    "CourseCode": "MGT-349",
+    "Name": "Entrepreneurship",
     "Semester": "7th Semester",
     "IsLab": false,
     "TeacherId": 15
   },
   {
     "SubjectId": 35,
-    "CourseCode": "",
-    "Name": "Mobile App Development Mr.",
+    "CourseCode": "CSC-455",
+    "Name": "Mobile Application Development",
     "Semester": "7th Semester",
     "IsLab": false,
     "TeacherId": 12
@@ -282,7 +282,7 @@
   {
     "SubjectId": 36,
     "CourseCode": "HU-200",
-    "Name": "Technical Report Writing Ms.",
+    "Name": "Technical Report Writing",
     "Semester": "7th Semester",
     "IsLab": false,
     "TeacherId": 1
@@ -298,7 +298,7 @@
   {
     "SubjectId": 38,
     "CourseCode": "CMPE-112",
-    "Name": "PF(Lab Ms.",
+    "Name": "Programming Fundamentals",
     "Semester": "1st Semester",
     "IsLab": true,
     "TeacherId": 13
@@ -306,15 +306,15 @@
   {
     "SubjectId": 39,
     "CourseCode": "CMPE-111",
-    "Name": "ACIT Mr. Tahir",
+    "Name": "Applications of Information & Communication Technologies",
     "Semester": "1st Semester",
     "IsLab": false,
-    "TeacherId": 0
+    "TeacherId": 5
   },
   {
     "SubjectId": 40,
     "CourseCode": "MA-123",
-    "Name": "Calculus I Dr.",
+    "Name": "Calculus I",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 17
@@ -322,7 +322,7 @@
   {
     "SubjectId": 41,
     "CourseCode": "CMPE-251",
-    "Name": "Discrete Mathematical Structures Dr.",
+    "Name": "Discrete Mathematical Structures",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 4
@@ -330,7 +330,7 @@
   {
     "SubjectId": 42,
     "CourseCode": "CMPE-112",
-    "Name": "PF Ms.",
+    "Name": "Programming Fundamentals",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 13
@@ -338,7 +338,7 @@
   {
     "SubjectId": 43,
     "CourseCode": "PHY-111",
-    "Name": "Applied Physics(Lab",
+    "Name": "Applied Physics",
     "Semester": "1st Semester",
     "IsLab": true,
     "TeacherId": 16
@@ -354,7 +354,7 @@
   {
     "SubjectId": 45,
     "CourseCode": "MA-011",
-    "Name": "Basic Math TF- 03",
+    "Name": "Basic Mathematics",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 0
@@ -362,23 +362,23 @@
   {
     "SubjectId": 46,
     "CourseCode": "CMPE-111",
-    "Name": "ACIT(Lab Ms.",
+    "Name": "Applications of Information & Communication Technologies",
     "Semester": "1st Semester",
     "IsLab": true,
     "TeacherId": 13
   },
   {
     "SubjectId": 47,
-    "CourseCode": "",
-    "Name": "Digital Logic Design(Lab Dr.",
+    "CourseCode": "EE-221",
+    "Name": "Digital Logic Design",
     "Semester": "2nd Semester",
     "IsLab": true,
     "TeacherId": 6
   },
   {
     "SubjectId": 48,
-    "CourseCode": "",
-    "Name": "Database Systems Mr.",
+    "CourseCode": "CSC-201",
+    "Name": "Database Systems",
     "Semester": "2nd Semester",
     "IsLab": false,
     "TeacherId": 11
@@ -386,7 +386,7 @@
   {
     "SubjectId": 49,
     "CourseCode": "CMPE-252",
-    "Name": "Probability and Random Variables Dr.",
+    "Name": "Probability and Random Variables",
     "Semester": "2nd Semester",
     "IsLab": false,
     "TeacherId": 19
@@ -394,39 +394,39 @@
   {
     "SubjectId": 50,
     "CourseCode": "MA-224",
-    "Name": "Multivariate Calculus Dr.",
+    "Name": "Multivariate Calculus",
     "Semester": "2nd Semester",
     "IsLab": false,
     "TeacherId": 18
   },
   {
     "SubjectId": 51,
-    "CourseCode": "",
-    "Name": "Database Systems (Lab Mr.",
+    "CourseCode": "CSC-201",
+    "Name": "Database Systems",
     "Semester": "2nd Semester",
     "IsLab": true,
     "TeacherId": 11
   },
   {
     "SubjectId": 52,
-    "CourseCode": "",
-    "Name": "Object Oriented Programming Mr. (Lab # 1",
+    "CourseCode": "CSC-202",
+    "Name": "Object Oriented Programming",
     "Semester": "2nd Semester",
     "IsLab": true,
     "TeacherId": 12
   },
   {
     "SubjectId": 53,
-    "CourseCode": "",
-    "Name": "Object Oriented Programming Mr.",
+    "CourseCode": "CSC-202",
+    "Name": "Object Oriented Programming",
     "Semester": "2nd Semester",
     "IsLab": false,
     "TeacherId": 12
   },
   {
     "SubjectId": 54,
-    "CourseCode": "",
-    "Name": "Digital Logic Design Dr.",
+    "CourseCode": "EE-221",
+    "Name": "Digital Logic Design",
     "Semester": "2nd Semester",
     "IsLab": false,
     "TeacherId": 6
@@ -434,7 +434,7 @@
   {
     "SubjectId": 55,
     "CourseCode": "MA-012",
-    "Name": "Basic Math Mr.",
+    "Name": "Basic Mathematics",
     "Semester": "2nd Semester",
     "IsLab": false,
     "TeacherId": 9
@@ -442,7 +442,7 @@
   {
     "SubjectId": 56,
     "CourseCode": "CSC-102",
-    "Name": "PF Ms.",
+    "Name": "Programming Fundamentals",
     "Semester": "1st Semester",
     "IsLab": false,
     "TeacherId": 13
@@ -450,7 +450,7 @@
   {
     "SubjectId": 57,
     "CourseCode": "CSC-102",
-    "Name": "PF(Lab Ms.",
+    "Name": "Programming Fundamentals",
     "Semester": "1st Semester",
     "IsLab": true,
     "TeacherId": 13
@@ -458,7 +458,7 @@
   {
     "SubjectId": 58,
     "CourseCode": "CSC-100",
-    "Name": "ACIT (Lab # 1 Ms.",
+    "Name": "Applications of Information & Communication Technologies",
     "Semester": "1st Semester",
     "IsLab": true,
     "TeacherId": 13
@@ -466,7 +466,7 @@
   {
     "SubjectId": 59,
     "CourseCode": "MATH-104",
-    "Name": "Calculus II Dr.",
+    "Name": "Calculus II",
     "Semester": "2nd Semester",
     "IsLab": false,
     "TeacherId": 18
@@ -474,7 +474,7 @@
   {
     "SubjectId": 60,
     "CourseCode": "HU-102",
-    "Name": "Functional Ms.",
+    "Name": "Functional English",
     "Semester": "2nd Semester",
     "IsLab": false,
     "TeacherId": 1

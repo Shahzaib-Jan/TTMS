@@ -417,16 +417,31 @@ namespace TTMS_OOP.Forms
                             g.DrawRectangle(borderPen, x, y, CELL_W, mergedH);
                             g.FillRectangle(new SolidBrush(fg), x, y, 4, mergedH);
                             int labReserve = subj.IsLab ? 36 : 0;
-                            RectangleF subjRect = new RectangleF(x + 8, y + 7, CELL_W - 16 - labReserve, 20);
-                            using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisCharacter, FormatFlags = StringFormatFlags.NoWrap, LineAlignment = StringAlignment.Center })
+                            float maxTitleH = span > 1 ? 40f : 24f;
+                            RectangleF subjRect = new RectangleF(x + 8, y + 5, CELL_W - 16 - labReserve, maxTitleH);
+                            float sFontSize = 8f;
+                            Font dynamicSubjFont = new Font("Segoe UI", sFontSize, FontStyle.Bold);
+                            SizeF sMeasure = g.MeasureString(subj.Name ?? "", dynamicSubjFont, (int)subjRect.Width);
+                            while (sMeasure.Height > maxTitleH && sFontSize > 6.4f)
                             {
-                                g.DrawString(subj.Name ?? "", subjFont, new SolidBrush(fg), subjRect, sf);
+                                dynamicSubjFont.Dispose();
+                                sFontSize -= 0.4f;
+                                dynamicSubjFont = new Font("Segoe UI", sFontSize, FontStyle.Bold);
+                                sMeasure = g.MeasureString(subj.Name ?? "", dynamicSubjFont, (int)subjRect.Width);
+                            }
+
+                            using (dynamicSubjFont)
+                            using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisWord, LineAlignment = StringAlignment.Near })
+                            {
+                                g.DrawString(subj.Name ?? "", dynamicSubjFont, new SolidBrush(fg), subjRect, sf);
                             }
 
                             if (tchr != null)
                             {
                                 int codeReserve = !string.IsNullOrWhiteSpace(subj.CourseCode) && span == 1 ? 55 : 0;
-                                RectangleF teacherRect = new RectangleF(x + 8, y + 25, CELL_W - 16 - codeReserve, 18);
+                                float tY = y + Math.Max(22, sMeasure.Height + 5);
+                                if (tY + 16 > y + mergedH - 4) tY = y + mergedH - 18;
+                                RectangleF teacherRect = new RectangleF(x + 8, tY, CELL_W - 16 - codeReserve, 16);
                                 using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisCharacter, FormatFlags = StringFormatFlags.NoWrap, LineAlignment = StringAlignment.Center })
                                 {
                                     g.DrawString(tchr.ToString(), teacherFont, new SolidBrush(Color.FromArgb(160, fg.R, fg.G, fg.B)), teacherRect, sf);
@@ -712,16 +727,31 @@ namespace TTMS_OOP.Forms
                             }
 
                             int labReserve = subj.IsLab ? 36 : 0;
-                            RectangleF subjRect = new RectangleF(cardRect.X + 8, cardRect.Y + 7, cardRect.Width - 16 - labReserve, 20);
-                            using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisCharacter, FormatFlags = StringFormatFlags.NoWrap, LineAlignment = StringAlignment.Center })
+                            float maxTitleH = span > 1 ? 40f : 24f;
+                            RectangleF subjRect = new RectangleF(cardRect.X + 8, cardRect.Y + 5, cardRect.Width - 16 - labReserve, maxTitleH);
+                            float sFontSize = 8f;
+                            Font dynamicSubjFont = new Font("Segoe UI", sFontSize, FontStyle.Bold);
+                            SizeF sMeasure = g.MeasureString(subj.Name ?? "", dynamicSubjFont, (int)subjRect.Width);
+                            while (sMeasure.Height > maxTitleH && sFontSize > 6.4f)
                             {
-                                g.DrawString(subj.Name ?? "", subjFont, new SolidBrush(fg), subjRect, sf);
+                                dynamicSubjFont.Dispose();
+                                sFontSize -= 0.4f;
+                                dynamicSubjFont = new Font("Segoe UI", sFontSize, FontStyle.Bold);
+                                sMeasure = g.MeasureString(subj.Name ?? "", dynamicSubjFont, (int)subjRect.Width);
+                            }
+
+                            using (dynamicSubjFont)
+                            using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisWord, LineAlignment = StringAlignment.Near })
+                            {
+                                g.DrawString(subj.Name ?? "", dynamicSubjFont, new SolidBrush(fg), subjRect, sf);
                             }
 
                             if (tchr != null)
                             {
                                 int codeReserve = !string.IsNullOrWhiteSpace(subj.CourseCode) && span == 1 ? 55 : 0;
-                                RectangleF teacherRect = new RectangleF(cardRect.X + 8, cardRect.Y + 25, cardRect.Width - 16 - codeReserve, 18);
+                                float tY = cardRect.Y + Math.Max(22, sMeasure.Height + 5);
+                                if (tY + 16 > cardRect.Bottom - 4) tY = cardRect.Bottom - 18;
+                                RectangleF teacherRect = new RectangleF(cardRect.X + 8, tY, cardRect.Width - 16 - codeReserve, 16);
                                 using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisCharacter, FormatFlags = StringFormatFlags.NoWrap, LineAlignment = StringAlignment.Center })
                                 {
                                     g.DrawString(tchr.ToString(), teacherFont, new SolidBrush(Color.FromArgb(170, fg.R, fg.G, fg.B)), teacherRect, sf);
