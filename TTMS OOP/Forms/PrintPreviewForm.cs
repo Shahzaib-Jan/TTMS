@@ -41,8 +41,8 @@ namespace TTMS_OOP.Forms
             Color.FromArgb(20,  70, 120)
         };
 
-        private const int CELL_W    = 150;
-        private const int CELL_H    = 62;
+        private const int CELL_W    = 160;
+        private const int CELL_H    = 68;
         private const int TIME_W    = 85;
         private const int DAY_ROW_H = 36;
         private const int HEADER_H  = 60;
@@ -438,13 +438,27 @@ namespace TTMS_OOP.Forms
 
                             if (tchr != null)
                             {
-                                int codeReserve = !string.IsNullOrWhiteSpace(subj.CourseCode) && span == 1 ? 55 : 0;
                                 float tY = y + Math.Max(22, sMeasure.Height + 5);
                                 if (tY + 16 > y + mergedH - 4) tY = y + mergedH - 18;
+                                bool overlapsWithCode = !string.IsNullOrWhiteSpace(subj.CourseCode) && tY >= y + mergedH - 20;
+                                int codeReserve = overlapsWithCode ? 48 : 0;
                                 RectangleF teacherRect = new RectangleF(x + 8, tY, CELL_W - 16 - codeReserve, 16);
-                                using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisCharacter, FormatFlags = StringFormatFlags.NoWrap, LineAlignment = StringAlignment.Center })
+
+                                float tFontSize = 7.8f;
+                                Font dynamicTchrFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
+                                SizeF tMeasure = g.MeasureString(tchr.ToString(), dynamicTchrFont);
+                                while (tMeasure.Width > teacherRect.Width && tFontSize > 6.2f)
                                 {
-                                    g.DrawString(tchr.ToString(), teacherFont, new SolidBrush(Color.FromArgb(160, fg.R, fg.G, fg.B)), teacherRect, sf);
+                                    dynamicTchrFont.Dispose();
+                                    tFontSize -= 0.3f;
+                                    dynamicTchrFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
+                                    tMeasure = g.MeasureString(tchr.ToString(), dynamicTchrFont);
+                                }
+
+                                using (dynamicTchrFont)
+                                using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisWord, FormatFlags = StringFormatFlags.NoWrap, LineAlignment = StringAlignment.Center })
+                                {
+                                    g.DrawString(tchr.ToString(), dynamicTchrFont, new SolidBrush(Color.FromArgb(160, fg.R, fg.G, fg.B)), teacherRect, sf);
                                 }
                             }
                             if (subj.IsLab)
@@ -748,13 +762,27 @@ namespace TTMS_OOP.Forms
 
                             if (tchr != null)
                             {
-                                int codeReserve = !string.IsNullOrWhiteSpace(subj.CourseCode) && span == 1 ? 55 : 0;
                                 float tY = cardRect.Y + Math.Max(22, sMeasure.Height + 5);
                                 if (tY + 16 > cardRect.Bottom - 4) tY = cardRect.Bottom - 18;
+                                bool overlapsWithCode = !string.IsNullOrWhiteSpace(subj.CourseCode) && tY >= cardRect.Bottom - 20;
+                                int codeReserve = overlapsWithCode ? 48 : 0;
                                 RectangleF teacherRect = new RectangleF(cardRect.X + 8, tY, cardRect.Width - 16 - codeReserve, 16);
-                                using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisCharacter, FormatFlags = StringFormatFlags.NoWrap, LineAlignment = StringAlignment.Center })
+
+                                float tFontSize = 7.8f;
+                                Font dynamicTchrFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
+                                SizeF tMeasure = g.MeasureString(tchr.ToString(), dynamicTchrFont);
+                                while (tMeasure.Width > teacherRect.Width && tFontSize > 6.2f)
                                 {
-                                    g.DrawString(tchr.ToString(), teacherFont, new SolidBrush(Color.FromArgb(170, fg.R, fg.G, fg.B)), teacherRect, sf);
+                                    dynamicTchrFont.Dispose();
+                                    tFontSize -= 0.3f;
+                                    dynamicTchrFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
+                                    tMeasure = g.MeasureString(tchr.ToString(), dynamicTchrFont);
+                                }
+
+                                using (dynamicTchrFont)
+                                using (StringFormat sf = new StringFormat { Trimming = StringTrimming.EllipsisWord, FormatFlags = StringFormatFlags.NoWrap, LineAlignment = StringAlignment.Center })
+                                {
+                                    g.DrawString(tchr.ToString(), dynamicTchrFont, new SolidBrush(Color.FromArgb(170, fg.R, fg.G, fg.B)), teacherRect, sf);
                                 }
                             }
 

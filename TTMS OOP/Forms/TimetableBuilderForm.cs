@@ -194,7 +194,7 @@ namespace TTMS_OOP.Forms
             {
                 int rowIndex = grid.Rows.Add();
                 grid.Rows[rowIndex].HeaderCell.Value = slot.StartTime + "\n" + slot.EndTime;
-                grid.Rows[rowIndex].Height = 80;
+                grid.Rows[rowIndex].Height = 84;
                 grid.Rows[rowIndex].Tag = slot.SlotId;
             }
             RefreshGrid();
@@ -350,7 +350,7 @@ namespace TTMS_OOP.Forms
 
                 courseCode = (subj != null && !string.IsNullOrWhiteSpace(subj.CourseCode)) ? subj.CourseCode.Trim() : "";
                 titleText = subj != null ? subj.Name : "Unknown Subject";
-                subtitleText = tchr != null ? "👨‍🏫 " + tchr.ToString() : "No Teacher Assigned";
+                subtitleText = tchr != null ? tchr.ToString() : "No Teacher Assigned";
 
                 if (hasConflict)
                 {
@@ -467,17 +467,31 @@ namespace TTMS_OOP.Forms
                 g.DrawString(titleText, titleFont, titleBrush, titleRect, sf);
             }
 
-            // Draw Teacher / Subtitle
-            int subWidth = cardRect.Width - 16 - (!string.IsNullOrEmpty(courseCode) ? 65 : 0);
+            // Draw Teacher / Subtitle (Auto-fit so full name is ALWAYS completely visible)
             float teacherY = cardRect.Y + Math.Max(26, titleSize.Height + 5);
             if (teacherY + 18 > cardRect.Bottom - 4)
-                teacherY = cardRect.Bottom - 22;
+                teacherY = cardRect.Bottom - 20;
+
+            bool overlapsWithCode = !string.IsNullOrEmpty(courseCode) && teacherY >= cardRect.Bottom - 22;
+            int subWidth = cardRect.Width - 16 - (overlapsWithCode ? 55 : 0);
             Rectangle subRect = new Rectangle(textLeft, (int)teacherY, subWidth, 18);
-            using (Font subFont = new Font("Segoe UI", 7.8f, FontStyle.Regular))
+
+            float tFontSize = 8f;
+            Font subFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
+            SizeF tSize = g.MeasureString(subtitleText, subFont);
+            while (tSize.Width > subWidth && tFontSize > 6.4f)
+            {
+                subFont.Dispose();
+                tFontSize -= 0.3f;
+                subFont = new Font("Segoe UI", tFontSize, FontStyle.Regular);
+                tSize = g.MeasureString(subtitleText, subFont);
+            }
+
+            using (subFont)
             using (SolidBrush subBrush = new SolidBrush(subtitleColor))
             using (StringFormat sf = new StringFormat
             {
-                Trimming = StringTrimming.EllipsisCharacter,
+                Trimming = StringTrimming.EllipsisWord,
                 FormatFlags = StringFormatFlags.NoWrap,
                 LineAlignment = StringAlignment.Center
             })

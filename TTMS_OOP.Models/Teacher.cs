@@ -6,7 +6,15 @@ namespace TTMS_OOP.Models
         public string Name { get; set; }
         public string Designation { get; set; }
 
-        public string FullName { get { return Designation + " " + Name; } }
+        public string FullName
+        {
+            get
+            {
+                if (string.IsNullOrWhiteSpace(Designation)) return (Name ?? "").Trim();
+                if (string.IsNullOrWhiteSpace(Name)) return (Designation ?? "").Trim();
+                return Designation.Trim() + " " + Name.Trim();
+            }
+        }
 
         public string GetEntityName()
         {
